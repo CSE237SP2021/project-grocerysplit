@@ -4,26 +4,33 @@ import java.util.Scanner;
 
 public class Menu {
 	private Scanner keyboardIn;
+	private GroceryList groceryList;
 	
 	public Menu() {
 		this.keyboardIn = new Scanner(System.in);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//TODO: build groceryList from input
+		
+		Menu grocerySplitMenu = new Menu();
+		grocerySplitMenu.runMenu();
 		
 	}
 	
-	private void runMainMenu() {
+	private void runMenu() {
 		this.displayMainMenu();
 		
 		int menuChoice = this.getUserMenuChoice();
 		
-		this.processMainMenuChoice();
+		this.processMainMenuChoice(menuChoice);
 	}
 	
-	private void processMainMenuChoice(int ) {
-		if 
+	private void processMainMenuChoice(int menuChoice) {
+		if (menuChoice == 1) {
+			System.out.println("You chose: 1. View list");
+			System.out.println(groceryList);
+		}
 	}
 	
 	private void displayMainMenu() {
@@ -31,8 +38,6 @@ public class Menu {
 		System.out.println("1. View list");
 		
 		System.out.println("Enter your choice below: ");
-		
-		
 	}
 	
 	private int getUserMenuChoice() {
