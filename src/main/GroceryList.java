@@ -1,19 +1,24 @@
 package main;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroceryList {
-	private Set<GroceryItem> items;
+	private List<GroceryItem> items;
 	
-	public GroceryList(Set<GroceryItem> items) {
-		this.items = items;
+	public GroceryList() {
+		this.items = new ArrayList<GroceryItem>();
+	}
+	
+	public boolean addItem(GroceryItem item) {
+		return this.items.add(item);
 	}
 	
 	@Override
 	public String toString() {
 		String formattedGroceryList = "";
 		for (GroceryItem item : this.items) {
-			formattedGroceryList += item;
+			formattedGroceryList += item + "\n";
 		}
 		
 		return formattedGroceryList;

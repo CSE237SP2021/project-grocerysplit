@@ -3,18 +3,25 @@ package main;
 import java.util.Set;
 
 public class GroceryItem {
-	private int price;
+	private float price;
 	private String name;
 	private Set<String> consumers;
-	private int pricePerConsumer;
+	private float pricePerConsumer;
 	
-	public GroceryItem(int price, String name, Set<String> consumers) {
+	public GroceryItem(float price, String name, Set<String> consumers) {
 		this.price = price;
 		this.name = name;
 		this.consumers = consumers;
 		this.pricePerConsumer = price / consumers.size();
 	}
 	
+	public String getName() {
+		return name;
+	}
+	public float getPricePerConsumer() {
+		return pricePerConsumer;
+	}
+
 	@Override
 	public String toString() {
 		String formattedConsumersList = "";
