@@ -4,21 +4,31 @@ import java.util.Scanner;
 
 public class Menu {
 	private Scanner keyboardIn;
-	private GroceryList groceryList;
+	private GroceryList mainList;
 	
-	public Menu() {
+	public static void main(String[] args) {
+		//check that valid number of args are supplied
+		if(args.length < 1) {
+			Error.NOFILEARG.printErrorMessage();
+			return;
+		} else if (args.length > 1) {
+			Error.TOOMANYFILEARGS.printErrorMessage();
+			return;
+		}
+		
+		FileInputProcessor inputProcessor = new FileInputProcessor();
+		GroceryList mainList = inputProcessor.processInputFile(args[0]);
+		
+		Menu grocerySplitMenu = new Menu(mainList);
+		grocerySplitMenu.runMenu();
+	}
+	
+	public Menu(GroceryList mainList) {
 		this.keyboardIn = new Scanner(System.in);
+		this.mainList = mainList;
 	}
 
-	public static void main(String[] args) {
-		//TODO: build groceryList from input
-		
-		Menu grocerySplitMenu = new Menu();
-		grocerySplitMenu.runMenu();
-		
-	}
-	
-	private void runMenu() {
+	public void runMenu() {
 		this.displayMainMenu();
 		
 		int menuChoice = this.getUserMenuChoice();
@@ -27,17 +37,25 @@ public class Menu {
 	}
 	
 	private void processMainMenuChoice(int menuChoice) {
-		if (menuChoice == 1) {
+		switch (menuChoice) {
+		case 0:
+			System.out.println("You chose: 0. Exit");
+			System.out.println("Goodbye!");
+			break;
+		case 1:
 			System.out.println("You chose: 1. View list");
-			System.out.println(groceryList);
-		}
+			System.out.println(mainList);
+			this.runMenu();
+			break;
+		}	
 	}
 	
 	private void displayMainMenu() {
 		System.out.println("Main Menu: ");
+		System.out.println("0. Exit");
 		System.out.println("1. View list");
 		
-		System.out.println("Enter your choice below: ");
+		System.out.println("Type your choice below and hit Enter: ");
 	}
 	
 	private int getUserMenuChoice() {
