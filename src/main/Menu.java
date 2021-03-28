@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
@@ -47,6 +48,10 @@ public class Menu {
 			System.out.println(mainList);
 			this.runMenu();
 			break;
+		case 2: 
+			System.out.println("You chose: 2. View amount owed per person");
+			System.out.println(getFormattedOutput());
+			break;
 		}	
 	}
 	
@@ -54,12 +59,22 @@ public class Menu {
 		System.out.println("Main Menu: ");
 		System.out.println("0. Exit");
 		System.out.println("1. View list");
+		System.out.println("2. View amount owed per person");
 		
 		System.out.println("Type your choice below and hit Enter: ");
 	}
 	
 	private int getUserMenuChoice() {
 		return keyboardIn.nextInt();
+	}
+
+	private String getFormattedOutput() {
+		String formattedOutput = "";
+		Map<String, Float> output = mainList.getAmountsOwed();
+		for (String person: output.keySet()) {
+			formattedOutput += person + ": $" + String.format("%.02f", output.get(person)) + "\n";
+		}
+		return formattedOutput;
 	}
 
 }

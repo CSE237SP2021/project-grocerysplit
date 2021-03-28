@@ -17,7 +17,7 @@ public class GroceryList {
 		return this.items.add(item);
 	}
 
-	public Map<String, Float> getAmountOwed() {
+	public Map<String, Float> getAmountsOwed() {
 		Map<String, Float> perPerson = new HashMap<String, Float>();
 		for (GroceryItem item: items) {
 			Set<String> consumers = item.getConsumers();
