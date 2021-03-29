@@ -51,6 +51,7 @@ public class Menu {
 		case 2: 
 			System.out.println("You chose: 2. View amount owed per person");
 			System.out.println(formatAmountsOwed());
+			this.runMenu();
 			break;
 		}	
 	}
