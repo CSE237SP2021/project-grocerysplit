@@ -20,7 +20,7 @@ public class FileInputProcessor {
 		
 		if(!isFileFormattingCorrect(linesOfInputFile)) {
 			Error.INVALIDFORMATTING.printErrorMessage();
-			//TODO: exit process
+			return null;
 		}
 		
 		GroceryList groceryList = new GroceryList();
@@ -50,10 +50,15 @@ public class FileInputProcessor {
 				return false;
 			}
 			
-			float price = Float.parseFloat(elementsOfLineSeparatedByTab[1]);
-			if(price < 0.01) {
+			try {
+				float price = Float.parseFloat(elementsOfLineSeparatedByTab[1]);
+				if(price < 0.01) {
+					return false;
+				}
+			} catch (NumberFormatException e) {
 				return false;
 			}
+			
 			
 			String[] consumers = elementsOfLineSeparatedByTab[2].split(",");
 			if(consumers.length < 1) {
