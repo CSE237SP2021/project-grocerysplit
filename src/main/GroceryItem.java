@@ -22,6 +22,10 @@ public class GroceryItem {
 		return pricePerConsumer;
 	}
 
+	public Set<String> getConsumers() {
+		return consumers;
+	}
+
 	@Override
 	public String toString() {
 		String formattedConsumersList = "";
