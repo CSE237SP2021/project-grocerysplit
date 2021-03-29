@@ -56,7 +56,8 @@ public class Menu {
 			break;
 		case 2: 
 			System.out.println("You chose: 2. View amount owed per person");
-			System.out.println(getFormattedOutput());
+			System.out.println(formatAmountsOwed());
+			this.runMenu();
 			break;
 		}	
 	}
@@ -83,7 +84,7 @@ public class Menu {
 	 * Steph: $6.16
 	 * Chen: $1.66
 	 */
-	private String getFormattedOutput() {
+	private String formatAmountsOwed() {
 		String formattedOutput = "";
 		Map<String, Float> output = mainList.getAmountsOwed();
 		for (String person: output.keySet()) {
