@@ -15,6 +15,10 @@ public class FileInputProcessor {
 		
 	}
 
+	/** 
+ 	 * Takes in file argument and throws an error if the file is formatted incorrectly.
+	 * If formatted correctly, it creates a GroceryList from the input file. 
+ 	 */
 	public GroceryList processInputFile(String filename) {
 		List<String[]> linesOfInputFile = openFile(filename);
 		
@@ -34,6 +38,9 @@ public class FileInputProcessor {
 		return groceryList;
 	}
 	
+	/** 
+ 	 * Converts one line from input file into a GroceryItem
+ 	 */
 	private GroceryItem convertInputLineToGroceryItem(String[] elementsOfLine) {
 		String name = elementsOfLine[0];
 		Float price = Float.parseFloat(elementsOfLine[1]);
@@ -44,6 +51,11 @@ public class FileInputProcessor {
 		return new GroceryItem(price, name, consumers);
 	}
 	
+	/** 
+ 	 * Check that the input file is formatted correctly. This includes checking each 
+	 * line is formatted like in the exampleInputFile.txt. Also checks that no prices are
+	 * negative, and that the list of consumers is comma separated. 
+ 	 */
 	private boolean isFileFormattingCorrect(List<String[]> linesOfInputFile) {
 		for(String[] elementsOfLineSeparatedByTab : linesOfInputFile) {
 			if(elementsOfLineSeparatedByTab.length != 3) {
@@ -62,7 +74,10 @@ public class FileInputProcessor {
 		}
 		return true;
 	}
-	
+
+	/** 
+ 	 * Opens input file and returns a String array of the elements of each line. 
+ 	 */
 	private List<String[]> openFile(String filename) {
 		List<String[]> linesOfInputFile = new ArrayList<String[]>();
 		

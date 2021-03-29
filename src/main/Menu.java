@@ -37,6 +37,12 @@ public class Menu {
 		this.processMainMenuChoice(menuChoice);
 	}
 	
+	/** 
+	 * Inputs: either 0, 1, or 2
+	 * 0 - leaving the menu
+	 * 1 - viewing the list of items (items, prices, and people)
+	 * 2 - view calculated amount each person owes
+	 */
 	private void processMainMenuChoice(int menuChoice) {
 		switch (menuChoice) {
 		case 0:
@@ -55,6 +61,9 @@ public class Menu {
 		}	
 	}
 	
+	/** 
+	 * Displays menu options for user to choose from between 0, 1, and 2
+	 */
 	private void displayMainMenu() {
 		System.out.println("Main Menu: ");
 		System.out.println("0. Exit");
@@ -68,6 +77,12 @@ public class Menu {
 		return keyboardIn.nextInt();
 	}
 
+	/** 
+	 * Returns amounts owed per person formatted like the example below:
+	 * Anees: $6.16
+	 * Steph: $6.16
+	 * Chen: $1.66
+	 */
 	private String getFormattedOutput() {
 		String formattedOutput = "";
 		Map<String, Float> output = mainList.getAmountsOwed();
