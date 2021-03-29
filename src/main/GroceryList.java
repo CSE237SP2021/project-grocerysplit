@@ -1,16 +1,25 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 
-public class GroceryList {
+public class GroceryList implements Iterable<GroceryItem> {
 	private List<GroceryItem> items;
 	
 	public GroceryList() {
 		this.items = new ArrayList<GroceryItem>();
+	}
+	
+	public int getSize() {
+		return items.size();
+	}
+	
+	public Iterator<GroceryItem> iterator() {
+		return items.iterator();
 	}
 	
 	public boolean addItem(GroceryItem item) {
