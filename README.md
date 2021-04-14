@@ -27,14 +27,33 @@ The main features lie in `./src/main`, which include `Menu`, `GroceryItem`, and 
 - Calculation of Output
 - Unit Tests
 
+#### What user stories were completed this iteration?
+- A user should be able to input a properly formatted grocery list file and access the grocery list
+#### What user stories do you intend to complete next iteration?
+- Next iteration, the users should be able to do the same, but also access the amount each person owes (in a decently formatted output)
+#### Is there anything that you implemented but doesn't currently work?
+- No
+#### What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
+- See section above on "How to Run the Program"
+
 ### Iteration 2 - Cleaning up and Optimizing
 - Unit Test for Calculation
 - Optimize Calculation
 - Fix up Formatting 
 - Add Feature and Tests to Edit Items
 
+#### What user stories were completed this iteration?
+- A user should be able to input a properly formatted grocery list file and access the grocery list and the amount each person owes. 
+#### What user stories do you intend to complete next iteration?
+- Next iteration, the user should be able to access the amount owed including a breakdown with taxes. 
+#### Is there anything that you implemented but doesn't currently work?
+- No
+#### What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
+- See section above on "How to Run the Program"
+
 ### Iteration 3 - TBD
 - Add Taxes Feature and Tests
+- Option for user to add an additional item
 - UI
 
  
