@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class GroceryList implements Iterable<GroceryItem> {
 	private List<GroceryItem> items;
+	private Map<String, Float> perPerson;
 	
 	public GroceryList() {
 		this.items = new ArrayList<GroceryItem>();
@@ -22,19 +23,18 @@ public class GroceryList implements Iterable<GroceryItem> {
 		return items.iterator();
 	}
 	
+//	Add price per person as item is added to the list
 	public boolean addItem(GroceryItem item) {
+		Set<String> consumers = item.getConsumers();
+		for (String person: consumers) {
+			perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + item.getPricePerConsumer());
+		}
+		
 		return this.items.add(item);
 	}
 
 	public Map<String, Float> getAmountsOwed() {
-		Map<String, Float> perPerson = new HashMap<String, Float>();
-		for (GroceryItem item: items) {
-			Set<String> consumers = item.getConsumers();
-			for (String person: consumers) {
-				perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + item.getPricePerConsumer());
-			}
-		}
-		return perPerson;
+		return this.perPerson;
 	}
 	
 	@Override
