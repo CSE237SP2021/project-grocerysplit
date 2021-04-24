@@ -39,9 +39,4 @@ public class GroceryItem {
 		
 		return name + ": " + price + " | " + formattedConsumersList;
 	}
-
-	@Override
-	public boolean equals(GroceryItem other) {
-		return other.getName().equals(this.name);
-	}
 }
