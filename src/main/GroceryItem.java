@@ -16,14 +16,18 @@ public class GroceryItem {
 	}
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public float getPricePerConsumer() {
-		return pricePerConsumer;
+		return this.pricePerConsumer;
 	}
 
 	public Set<String> getConsumers() {
-		return consumers;
+		return this.consumers;
+	}
+
+	public float getPrice() {
+		return this.price
 	}
 
 	@Override
@@ -34,5 +38,10 @@ public class GroceryItem {
 		}
 		
 		return name + ": " + price + " | " + formattedConsumersList;
+	}
+
+	@Override
+	public boolean equals(GroceryItem other) {
+		return other.getName().equals(this.name);
 	}
 }
