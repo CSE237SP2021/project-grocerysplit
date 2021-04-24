@@ -1,6 +1,7 @@
 package main;
 
 import java.util.Set;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,23 +28,25 @@ public class EditItemHandler {
     private void getUserInput() {
         this.itemToEdit = this.getUserSelectedItemToEdit();
         this.pieceToEdit = this.getUserSelectedPieceOfItemToEdit();
+        this.keyboardIn.nextLine();
 
         switch (this.pieceToEdit) {
             case 1:
-                this.newName = this.getUserInputNewName();
+            	this.newName = this.getUserInputNewName();
                 break;
             case 2:
                 this.newPrice = this.getUserInputNewPrice();
+                this.keyboardIn.nextLine();
                 break;
             case 3:
-                this.newConsumers.addAll(this.getUserInputNewConsumers().split(",").asList());
+                this.newConsumers.addAll(List.of(this.getUserInputNewConsumers().split(",")));
                 break;
         }
     }
 
     private void editItem() {
-        GroceryItem oldItem = this.listToEdit.get(this.itemToEdit);
-        GroceryItem updatedItem;
+        GroceryItem oldItem = this.listToEdit.getItem(this.itemToEdit);
+        GroceryItem updatedItem = null;
 
         switch (this.pieceToEdit) {
             case 1:
@@ -76,14 +79,17 @@ public class EditItemHandler {
 	}
 
     private String getUserInputNewName() {
-        return keyboardIn.nextLine();
+    	System.out.println("Please enter the new name below:");
+    	return keyboardIn.nextLine();
     }
 
     private float getUserInputNewPrice() {
+    	System.out.println("Please enter the new price below:");
         return keyboardIn.nextFloat();
     }
 
     private String getUserInputNewConsumers() {
+    	System.out.println("Please enter the new consumers below (separate names by commas):");
         return keyboardIn.nextLine();
     }
 

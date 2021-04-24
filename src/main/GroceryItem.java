@@ -27,7 +27,7 @@ public class GroceryItem {
 	}
 
 	public float getPrice() {
-		return this.price
+		return this.price;
 	}
 
 	@Override
