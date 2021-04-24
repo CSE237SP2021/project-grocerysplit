@@ -13,6 +13,7 @@ public class GroceryList implements Iterable<GroceryItem> {
 	
 	public GroceryList() {
 		this.items = new ArrayList<GroceryItem>();
+		this.perPerson = new HashMap<String, Float>();
 	}
 	
 	public int getSize() {
