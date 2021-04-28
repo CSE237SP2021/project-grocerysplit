@@ -2,7 +2,9 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -14,14 +16,19 @@ import main.GroceryList;
 class GroceryListTest {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	public void testEmptyList() {
+		GroceryList list = new GroceryList();
+		Map<String, Float> splits = calculateTotals(list);
+		assertEquals(list.getAmountsOwed(), splits, "Incorrect total per person. Expected: " + splits + ". Got: " + list.getAmountsOwed());		
 	}
 	
-	public static void testList(GroceryList list) {
+	@Test
+	public void testFullList() {
+		GroceryList list = new GroceryList();
+		list.addItem(new GroceryItem((float) 4.50, "Blueberries", new HashSet<>(Arrays.asList("a", "b", "c"))));
+		list.addItem(new GroceryItem((float) 5.50, "Strawberries", new HashSet<>(Arrays.asList("a", "b"))));
 		Map<String, Float> splits = calculateTotals(list);
-		assertEquals(list.getAmountsOwed(), splits, "Incorrect total per person. Expected: " + splits + ". Got: " + list.getAmountsOwed());
-		
+		assertEquals(list.getAmountsOwed(), splits, "Incorrect total per person. Expected: " + splits + ". Got: " + list.getAmountsOwed());	
 	}
 	
 	private static Map<String, Float> calculateTotals(GroceryList list) {
