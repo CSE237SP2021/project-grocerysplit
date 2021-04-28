@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Menu {
 	private Scanner keyboardIn;
 	private GroceryList mainList;
+	private EditItemHandler editItemHandler;
 	
 	public static void main(String[] args) {
 		//check that valid number of args are supplied
@@ -27,6 +28,7 @@ public class Menu {
 	public Menu(GroceryList mainList) {
 		this.keyboardIn = new Scanner(System.in);
 		this.mainList = mainList;
+		this.editItemHandler = new EditItemHandler(mainList);
 	}
 
 	public void runMenu() {
@@ -53,6 +55,11 @@ public class Menu {
 			System.out.println(formatAmountsOwed());
 			this.runMenu();
 			break;
+		case 3:
+			System.out.println("You chose: 3. Edit item");
+			this.editItemHandler.run();
+			this.runMenu();
+			break;
 		}	
 	}
 	
@@ -61,6 +68,7 @@ public class Menu {
 		System.out.println("0. Exit");
 		System.out.println("1. View list");
 		System.out.println("2. View amount owed per person");
+		System.out.println("3. Edit item");
 		
 		System.out.println("Type your choice below and hit Enter: ");
 	}

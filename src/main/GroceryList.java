@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.HashSet;
 
 public class GroceryList implements Iterable<GroceryItem> {
 	private List<GroceryItem> items;
@@ -36,6 +37,21 @@ public class GroceryList implements Iterable<GroceryItem> {
 
 	public Map<String, Float> getAmountsOwed() {
 		return this.perPerson;
+	}
+
+	public GroceryItem getItem(String itemName) {
+		for (GroceryItem item : this.items) {
+			if(item.getName().equals(itemName)) {
+				return item;
+			}
+		}
+
+		return null;
+	}
+
+	public void editItem(GroceryItem updatedItem, GroceryItem oldItem) {
+		int indexToReplace = this.items.indexOf(oldItem);
+		this.items.set(indexToReplace, updatedItem);
 	}
 	
 	@Override
