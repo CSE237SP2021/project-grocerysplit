@@ -8,6 +8,10 @@ public class GroceryItem {
 	private Set<String> consumers;
 	private float pricePerConsumer;
 	
+	/** 
+ 	 * Each grocery item has a price, name, and a list of consumers
+	 * where the consumers are the people who will be splitting that item
+ 	 */
 	public GroceryItem(float price, String name, Set<String> consumers) {
 		this.price = price;
 		this.name = name;
@@ -30,6 +34,10 @@ public class GroceryItem {
 		return this.price;
 	}
 
+	/** 
+	 * formats list of consumers for a certain item:
+	 * Ex: blueberries: 4.99 | Anees, Steph, Chen
+	 */
 	@Override
 	public String toString() {
 		String formattedConsumersList = "";
