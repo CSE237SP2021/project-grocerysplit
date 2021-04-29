@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.HashSet;
 
 public class GroceryList implements Iterable<GroceryItem> {
 	private List<GroceryItem> items;
@@ -39,6 +38,12 @@ public class GroceryList implements Iterable<GroceryItem> {
 		}
 		
 		return this.items.add(item);
+	}
+	
+	public void addTax(float taxAmount) {
+		for (String person: perPerson.keySet()) {
+			perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + taxAmount/perPerson.size());
+		}
 	}
 
 	/** 
@@ -78,4 +83,5 @@ public class GroceryList implements Iterable<GroceryItem> {
 		
 		return formattedGroceryList;
 	}
+
 }

@@ -27,12 +27,24 @@ public class FileInputProcessor {
 			return null;
 		}
 		
+		
+		String[] taxLine = null;
+		if (linesOfInputFile.get(linesOfInputFile.size() - 1)[0].toLowerCase() == "tax") {
+			taxLine = linesOfInputFile.get(linesOfInputFile.size() - 1);
+			linesOfInputFile.remove(linesOfInputFile.size() - 1);
+		}
+		
 		GroceryList groceryList = new GroceryList();
 		for(String[] elementsOfLine : linesOfInputFile) {
 			GroceryItem item = convertInputLineToGroceryItem(elementsOfLine);
 			if (!groceryList.addItem(item)) {
 				System.out.println("Problem adding " + item.getName() + " to groceryList");
 			}
+		}
+		
+		if (taxLine != null) {
+			float taxAmount = Float.parseFloat(taxLine[1]);
+			groceryList.addTax(taxAmount);
 		}
 		
 		return groceryList;
