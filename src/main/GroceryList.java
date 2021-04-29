@@ -40,9 +40,10 @@ public class GroceryList implements Iterable<GroceryItem> {
 		return this.items.add(item);
 	}
 	
-	public void addTax(float parseFloat) {
-		// TODO Auto-generated method stub
-		
+	public void addTax(float taxAmount) {
+		for (String person: perPerson.keySet()) {
+			perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + taxAmount/perPerson.size());
+		}
 	}
 
 	/** 

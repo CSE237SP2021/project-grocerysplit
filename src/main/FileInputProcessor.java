@@ -43,7 +43,8 @@ public class FileInputProcessor {
 		}
 		
 		if (taxLine != null) {
-			groceryList.addTax(Float.parseFloat(taxLine[1]));
+			float taxAmount = Float.parseFloat(taxLine[1]);
+			groceryList.addTax(taxAmount);
 		}
 		
 		return groceryList;
