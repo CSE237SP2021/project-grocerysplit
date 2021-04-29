@@ -10,12 +10,14 @@ import java.util.HashSet;
 
 public class GroceryList implements Iterable<GroceryItem> {
 	private List<GroceryItem> items;
+	private Map<String, Float> perPerson;
 	
 	/** 
  	 * Grocery List is a list of Grocery Items (see GroceryItem.java)
  	 */
 	public GroceryList() {
 		this.items = new ArrayList<GroceryItem>();
+		this.perPerson = new HashMap<String, Float>();
 	}
 	
 	/** 
@@ -29,7 +31,13 @@ public class GroceryList implements Iterable<GroceryItem> {
 		return items.iterator();
 	}
 	
+//	Add price per person as item is added to the list
 	public boolean addItem(GroceryItem item) {
+		Set<String> consumers = item.getConsumers();
+		for (String person: consumers) {
+			perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + item.getPricePerConsumer());
+		}
+		
 		return this.items.add(item);
 	}
 
@@ -37,14 +45,7 @@ public class GroceryList implements Iterable<GroceryItem> {
  	 * Returns hashmap of each consumer and the amount each person owes
  	 */
 	public Map<String, Float> getAmountsOwed() {
-		Map<String, Float> perPerson = new HashMap<String, Float>();
-		for (GroceryItem item: items) {
-			Set<String> consumers = item.getConsumers();
-			for (String person: consumers) {
-				perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + item.getPricePerConsumer());
-			}
-		}
-		return perPerson;
+		return this.perPerson;
 	}
 
 	public GroceryItem getItem(String itemName) {
