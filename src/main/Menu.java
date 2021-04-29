@@ -55,7 +55,7 @@ public class Menu {
 		System.out.println("0. Exit");
 		System.out.println("1. View list");
 		
-		System.out.println("Type your choice below and hit Enter: ");
+		System.out.println("Type your choice (type 0, 1, 2, or 3) below and hit Enter: ");
 	}
 	
 	private int getUserMenuChoice() {
