@@ -58,9 +58,9 @@ public class GroceryList implements Iterable<GroceryItem> {
 		return null;
 	}
 
-	public void editItem(GroceryItem updatedItem, GroceryItem oldItem) {
-		int indexToReplace = this.items.indexOf(oldItem);
-		this.items.set(indexToReplace, updatedItem);
+	public boolean editItem(GroceryItem updatedItem, GroceryItem oldItem) {
+		this.items.remove(oldItem);
+		return this.addItem(updatedItem);
 	}
 	
 	/** 

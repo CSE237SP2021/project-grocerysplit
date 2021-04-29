@@ -63,7 +63,9 @@ public class Menu {
 			break;
 		case 3:
 			System.out.println("You chose: 3. Edit item");
-			this.editItemHandler.run();
+			if(!this.editItemHandler.run()) {
+				Error.EDITERROR.printErrorMessage();
+			}
 			this.runMenu();
 			break;
 		}	

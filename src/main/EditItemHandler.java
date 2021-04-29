@@ -20,9 +20,9 @@ public class EditItemHandler {
         this.listToEdit = listToEdit;
     }
 
-    public void run() {
+    public boolean run() {
         this.getUserInput();
-        this.editItem();
+        return this.editItem();
     }
 
     private void getUserInput() {
@@ -44,7 +44,7 @@ public class EditItemHandler {
         }
     }
 
-    private void editItem() {
+    private boolean editItem() {
         GroceryItem oldItem = this.listToEdit.getItem(this.itemToEdit);
         GroceryItem updatedItem = null;
 
@@ -60,7 +60,7 @@ public class EditItemHandler {
                 break;    
         }
 
-        listToEdit.editItem(updatedItem, oldItem);
+        return listToEdit.editItem(updatedItem, oldItem);
     }
 
     private int getUserSelectedPieceOfItemToEdit() {

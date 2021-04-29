@@ -30,6 +30,13 @@ public enum Error {
 					+ "<Item 1><tab><Price of Item 1><tab><Consumer 1>,<Consumer 2>,<Consumer 3>\n"
 					+ "See exampleInputFile.txt to see an example of how the text file should be formatted";
 		}
+	},
+	//If editing doesn't happen
+	EDITERROR {
+		@Override
+		public String toString() {
+			return "Issue editing an item";
+		}
 	}
 	;
 	// Generic error message printed before more specific details on the error are given
