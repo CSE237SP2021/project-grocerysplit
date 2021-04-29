@@ -44,7 +44,7 @@ public class GroceryItem {
 		for (String consumer : this.consumers) {
 			formattedConsumersList += consumer + ", ";
 		}
-		
+		formattedConsumersList = formattedConsumersList.replaceAll(", $", "");
 		return name + ": " + price + " | " + formattedConsumersList;
 	}
 }
