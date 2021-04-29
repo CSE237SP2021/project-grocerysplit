@@ -51,9 +51,18 @@ The main features lie in `./src/main`, which include `Menu`, `GroceryItem`, and 
 #### What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
 - See section above on "How to Run the Program"
 
-### Iteration 3 - TBD
+### Iteration 3 - Additional Features and Fix ups
 - Add Taxes Feature and Tests
-- Option for user to add an additional item
-- UI
+- Feature option for user to add an additional item
+- Added feature to edit an item 
+- Cleaned up formatting
+
+#### What user stories were completed this iteration?
+- A user should be able to input a properly formatted grocery list file, access the grocery list, the amount each person owes (including tax), add item, and edit an item. 
+#### Is there anything that you implemented but doesn't currently work?
+- No
+#### What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
+- See section above on "How to Run the Program"
+
 
  
