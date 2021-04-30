@@ -9,6 +9,7 @@ Grocery Split is a program geared towards college students or any group of adult
  apple  2.99  Chen, Steph
  chips  4.55  Anees, Steph
  potato 3.00  Anees, Chen, Steph
+ tax 3.25
 
  ```
  where there are 3 inputs on each line (item, price, consumer list), and each input is separated by a tab.
