@@ -40,7 +40,7 @@ class GroceryListTest {
 				splits.put(person, splits.getOrDefault(person, (float) 0) + item.getPricePerConsumer());
 			}
 		}
-		
+
 		return splits;
 	}
 

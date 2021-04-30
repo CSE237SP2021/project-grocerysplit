@@ -9,6 +9,8 @@ import java.util.Set;
 
 public class GroceryList implements Iterable<GroceryItem> {
 	private List<GroceryItem> items;
+	private float tax;
+	private float subTotal;
 	private Map<String, Float> perPerson;
 	
 	/** 
@@ -37,12 +39,15 @@ public class GroceryList implements Iterable<GroceryItem> {
 			perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + item.getPricePerConsumer());
 		}
 		
+		subTotal += item.getPrice();
 		return this.items.add(item);
 	}
 	
 	public void addTax(float taxAmount) {
+		tax = taxAmount;
 		for (String person: perPerson.keySet()) {
-			perPerson.put(person, perPerson.getOrDefault(person, (float) 0) + taxAmount/perPerson.size());
+			float subTotalSplit = perPerson.getOrDefault(person, (float) 0);
+			perPerson.put(person, subTotalSplit + taxAmount*(subTotalSplit/subTotal));
 		}
 	}
 
@@ -66,6 +71,7 @@ public class GroceryList implements Iterable<GroceryItem> {
 	public boolean editItem(GroceryItem updatedItem, GroceryItem oldItem) {
 		this.items.remove(oldItem);
 		this.removeItemFromFinalCalculation(oldItem);
+		this.removeTaxFromFinalCalculation(oldItem);
 		return this.addItem(updatedItem);
 	}
 	
@@ -73,6 +79,16 @@ public class GroceryList implements Iterable<GroceryItem> {
 		Set<String> consumers = itemToRemove.getConsumers();
 		for(String person : consumers) {
 			this.perPerson.put(person, this.perPerson.getOrDefault(person, itemToRemove.getPricePerConsumer()) - itemToRemove.getPricePerConsumer());
+		}
+		
+		subTotal -= itemToRemove.getPrice();
+	}
+	
+	private void removeTaxFromFinalCalculation(GroceryItem itemToRemove) {
+		Set<String> consumers = itemToRemove.getConsumers();
+		for(String person : consumers) {
+			float split = perPerson.getOrDefault(person, (float) 0);
+			perPerson.put(person, split - tax*itemToRemove.getPrice()/subTotal);
 		}
 	}
 	

@@ -22,16 +22,15 @@ public class FileInputProcessor {
 	public GroceryList processInputFile(String filename) {
 		List<String[]> linesOfInputFile = openFile(filename);
 		
+		String[] taxLine = null;
+		if (linesOfInputFile.get(linesOfInputFile.size() - 1)[0].toLowerCase().equals("tax")) {
+			taxLine = linesOfInputFile.get(linesOfInputFile.size() - 1);
+			linesOfInputFile.remove(linesOfInputFile.size() - 1);
+		}
+		
 		if(!isFileFormattingCorrect(linesOfInputFile)) {
 			Error.INVALIDFORMATTING.printErrorMessage();
 			return null;
-		}
-		
-		
-		String[] taxLine = null;
-		if (linesOfInputFile.get(linesOfInputFile.size() - 1)[0].toLowerCase() == "tax") {
-			taxLine = linesOfInputFile.get(linesOfInputFile.size() - 1);
-			linesOfInputFile.remove(linesOfInputFile.size() - 1);
 		}
 		
 		GroceryList groceryList = new GroceryList();
