@@ -81,7 +81,7 @@ public class Menu {
 		System.out.println("2. View amount owed per person");
 		System.out.println("3. Edit item");
 		
-		System.out.println("Type your choice below and hit Enter: ");
+		System.out.println("Type your choice (type 0, 1, 2, or 3) below and hit Enter: ");
 	}
 	
 	private int getUserMenuChoice() {
